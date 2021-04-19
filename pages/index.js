@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import { getAllFilesFrontMatter } from '../lib/mdx'
 
 import styled from 'styled-components'
+import Typing from '../components/Typing'
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('project')
@@ -14,11 +15,12 @@ export default function Home({posts}) {
   return (
     <Layout home>
       <Head>
-        <title>Erica Huang</title>
+        <title>1522 Collective</title>
         <link rel="icon" href="favicon.ico" />
       </Head>
 
       <main>
+        <h1><Typing/></h1>
         <ListTitle><p>Selected Projects and Experiements</p></ListTitle>
         <Wrapper>
           {posts.map(({ slug, tag, title }) => (
