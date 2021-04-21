@@ -10,7 +10,7 @@ const meta = {
   favIcon:"/favicon.ico"
 }
 
-export default function Layout({ children}) {
+export default function Layout({children}) {
   return (
     <LayoutWrapper>
       <Head>
@@ -78,7 +78,6 @@ const LogoWrapper = styled.a`
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-left:-0.6rem;
 
   &:hover {
     text-decoration: none;

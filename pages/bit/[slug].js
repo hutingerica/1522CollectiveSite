@@ -3,6 +3,7 @@ import Layout from '../../components/Layout'
 import hydrate from 'next-mdx-remote/hydrate'
 import { getFiles, getFileBySlug } from '../../lib/mdx'
 import MDXComponent from '../../components/MDXComponent'
+import styled from 'styled-components'
 
 export default function Blog({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, {
@@ -14,11 +15,23 @@ export default function Blog({ mdxSource, frontMatter }) {
       <Head>
         <title>{frontMatter.title}</title>  
       </Head>
+      <Wrapper>
       <h1>{frontMatter.title}</h1>
       {frontMatter.readingTime.text}
       {content}
+      </Wrapper>
     </Layout>)
 }
+
+const Wrapper = styled.div`
+  margin: 6rem 8rem;
+  display: flex;
+  flex-direction: column;
+  p img {
+    margin: 0rem auto 2rem;
+  }
+
+`
 
 
 

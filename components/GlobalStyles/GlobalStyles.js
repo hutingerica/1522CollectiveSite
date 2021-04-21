@@ -1,4 +1,4 @@
-import {createGlobalStyle, creatGlobalStyles} from 'styled-components'
+import {createGlobalStyle} from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 /*CSS Reset*/
@@ -80,8 +80,9 @@ body {
     'cv03' 1, 'cv04' 1;
   font-variation-settings: 'wght' 450;
   font-variant: common-ligatures contextual;
-  letter-spacing: 0;
-  line-height: 1.7;
+  letter-spacing: 0.03rem;
+  font-size: 1rem;
+  line-height: 1.8;
   background-color: hsl(0deg 0% 98% / 100%);
   color: hsl(0deg 0% 17% / 100%);
 }
@@ -91,29 +92,45 @@ h3,
 h4,
 h5,
 h6 {
-  font-variation-settings: 'wght' 650;
+  font-variation-settings: 'wght' 500;
+  margin: 20px 0 10px;
+  padding: 0;
 }
 h1 {
-  font-variation-settings: 'wght' 850;
-  font-size: 3.8rem;
-  margin-bottom: 1.9rem;
+  font-variation-settings: 'wght' 700;
+  margin: 20px 0 10px;
+  padding: 0;
+  font-size: 2.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom:1rem;
 }
 h2 {
-  font-variation-settings: 'wght' 750;
-  font-size: 3.4rem;
-  margin-bottom: 1.7rem;
+  font-variation-settings: 'wght' 700;
+  margin: 20px 0 10px;
+  padding: 0;
+  font-size: 2rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+
 }
 h3 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+
 }
 h4 {
-  font-size: 2.7rem;
-  margin-bottom: 1.35rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
 }
 h5 {
-  font-size: 2.4rem;
-  margin-bottom: 1.2rem;
+  font-size: 1.125rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -122,6 +139,10 @@ a {
 }
 a:hover {
   color: hsl(0deg 0% 17% / 60%);
+}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0;
 }
 
 img {

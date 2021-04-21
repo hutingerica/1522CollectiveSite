@@ -10,13 +10,12 @@ import Typing from '../components/Typing'
 export async function getStaticProps() {
   const bits = await getAllFilesFrontMatter('bit')
   const themes = await getAllFilesFrontMatter('theme')
-
   return { props: { bits,themes } }
 }
 
 export default function Home({bits, themes}) {
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>1522 Collective</title>
         <link rel="icon" href="favicon.ico" />

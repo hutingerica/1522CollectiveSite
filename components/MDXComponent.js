@@ -1,3 +1,9 @@
+import styled from 'styled-components'
+
 export default function MDXComponent(){
-  return <div>this is a test MDXComponent</div>
+  return <Wrapper>hello</Wrapper>
 }
+
+const Wrapper = styled.div`
+  background-color: gray;
+`
