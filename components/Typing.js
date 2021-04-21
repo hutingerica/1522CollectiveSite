@@ -20,7 +20,8 @@ const words = [
 export default function Typing(){
   return <StyledTyped
             strings={words}
-            typeSpeed={10}
+            typeSpeed={40}
+            startDelay={40}
             loop
         />
 }
@@ -37,3 +38,4 @@ const StyledTyped = Styled(Typed)`
 
 `
 
+// forked from https://github.com/ssbeefeater/react-typed

@@ -31,21 +31,19 @@ export default function Home({bits, themes}) {
         </StyledTitle>
         <ThemeItems>
           {themes.map(({slug, title, slogan}) => (
-            <ThemeItem>
             <Link href={`/theme/${slug}`}>
-              <a>
-              <Image
-                priority
-                block
-                src={`/icons/index-${slug}.png`}
-                height={50}
-                width={133}
-              />
-              <p>{title}</p>
-              </a>
+              <ThemeItem>
+                <Image
+                  priority
+                  block
+                  src={`/icons/index-${slug}.png`}
+                  height={50}
+                  width={133}
+                />
+                <p>{title}</p>
+                <ThemeSlogan><p>{slogan}</p></ThemeSlogan>
+              </ThemeItem>
             </Link>
-            <ThemeSlogan><p>{slogan}</p></ThemeSlogan>
-          </ThemeItem>
           ))}
         </ThemeItems>
         <StyledTitle>
@@ -63,7 +61,7 @@ export default function Home({bits, themes}) {
                           <p>{date}</p>
                         </Tags>
                         <ImageWrapper>
-                          <img src={`${heroImage}`}/>
+                          <Image src={`${heroImage}`} layout="fill" objectFit="cover" />
                         </ImageWrapper>
                       </a>
               </Link>
@@ -71,12 +69,9 @@ export default function Home({bits, themes}) {
           ))}
         </Wrapper>
       </main>
-
-      <footer>
-          Powered by{' '}
-      </footer>
     </Layout>
 )}
+
 const ThemeSlogan = styled.div`
   display: none;
   position: absolute;
@@ -94,22 +89,13 @@ const ThemeSlogan = styled.div`
 `
 const ThemeItem = styled.div`
   padding: 32px 12px;
+  cursor: pointer;
   border: 2.4px solid transparent;
   margin-right: 1rem;
   &::last-child {
     margin-right: 4.5rem;
   }
 
-  &:hover {
-    border: 2.4px solid hsl(0deg 0% 17% / 100%);
-    background-color: hsl(0deg 0% 100% / 50%);
-    a {
-      color: hsl(0deg 0% 17% / 100%);
-    }
-    ${ThemeSlogan}{
-      display:block;
-    }
-  }
   p{
     font-size:24px;
     line-height:1.25;
@@ -117,6 +103,15 @@ const ThemeItem = styled.div`
     width: fit-content;
     margin: 0 auto;
     margin-top:3px;
+  }
+
+  &:hover {
+    border: 2.4px solid hsl(0deg 0% 17% / 100%);
+    background-color: hsl(0deg 0% 100% / 50%);
+
+    ${ThemeSlogan}{
+      display:block;
+    }
   }
 `
 const ThemeItems = styled.div`
@@ -155,17 +150,33 @@ const Line = styled.div`
 `
 
 const Wrapper = styled.ul`
-  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  margin:0 -1rem;
+  align-items: stretch;
+  margin:-1rem;
 `
 const ListBit = styled.li`
-  width: 31%;
-  margin: 1rem;
+  width: 33.3%;
+  padding: 1rem;
+  border: 1px solid transparent;
   margin-bottom: 2rem;
+
+  a{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &:hover {
+    border: 1px solid transparent;
+  }
 `
 const ImageWrapper = styled.div`
+  position: relative;
+  min-width: 240px;
+  min-height: 320px;
+  flex: 1;
+
 `
 const ItemTitle = styled.p`
     letter-spacing: -0.02rem;

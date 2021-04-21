@@ -19,25 +19,39 @@ export default function Layout({ children}) {
         <meta property="og:image" content={meta.image}/>
         <meta name="og:title" content={meta.siteTitle}/>
       </Head>
-          <HomeHeader>
-            <Link href="/">
-              <LogoWrapper>
-              <Image
-                priority
-                src="/logo.png"
-                alt={meta.siteTitle}
-                height={30}
-                width={30}
-              />
-              <LogoFontStyle>1522 Collective</LogoFontStyle>
-              </LogoWrapper>
-            </Link>
-            <NavWrapper>
-              <Link href="/about"><a>About</a></Link>
-              <Link href="/bit"><a>Bits</a></Link>
-            </NavWrapper>
-          </HomeHeader>
+      <HomeHeader>
+        <Link href="/">
+          <LogoWrapper>
+            <Image
+              priority
+              src="/logo.png"
+              alt={meta.siteTitle}
+              height={30}
+              width={30}
+            />
+            <LogoFontStyle>1522 Collective</LogoFontStyle>
+          </LogoWrapper>
+        </Link>
+        <NavWrapper>
+          <Link href="/about"><a>About</a></Link>
+          <Link href="/bit"><a>Bits</a></Link>
+        </NavWrapper>
+      </HomeHeader>
       <main>{children}</main>
+      <Footer>
+        <Link href="/">
+          <LogoWrapper>
+            <Image
+              priority
+              src="/logo.png"
+              alt={meta.siteTitle}
+              height={30}
+              width={30}
+            />
+          <FooterFontStyle>1522 Collective</FooterFontStyle>
+          </LogoWrapper>
+        </Link>
+      </Footer>
     </LayoutWrapper>
   )
 }
@@ -57,25 +71,25 @@ const LogoFontStyle = styled.p`
 
   &:hover {
     text-decoration: none;
-    cursor: pointer;
   }
 `
 const LogoWrapper = styled.a`
   text-decoration: none;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  margin-left:-0.6rem;
 
   &:hover {
     text-decoration: none;
     color: hsla(0, 0%, 17%, 0.6);
   }
 `
-const HomeHeader = styled.div`
-  margin: 24px 0;
+const HomeHeader = styled.header`
+  padding: 1.5rem 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
 `
 const NavWrapper = styled.div`
 
@@ -92,4 +106,16 @@ const NavWrapper = styled.div`
         color: hsla(0, 0%, 17%, 0.6);
         }
   }
+`
+const Footer = styled.footer`
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const FooterFontStyle = styled.p`
+  font-size: 16px;
+  font-variation-settings: 'wght' 700;
+  line-height: 1.7;
+  letter-spacing: 0em;
 `

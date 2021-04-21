@@ -28,17 +28,17 @@ export default function About({themes}){
         <Subtitle>Vision</Subtitle>
         <Content>Learning from earthworms that loosen the soil and enhance porosity so that plants can root deeper, we envision 1522 Collective contributes to our futures by breaking the silos and creating new connections. We focus on creating lightweight engagements to future food, education, work and democracy that everyone can take part in:</Content>
       </VisionWrapper>
-      {themes.map(({vision, icon, title}) => (
-            <ThemeWrapper>
-            <ThemeIcon>
-              <Image fixed src={icon} height={35} width={50}/>
-            </ThemeIcon>
-            <ThemeText>
-              <Subtitle>{title}</Subtitle>
-              <Content>{vision}</Content>
-            </ThemeText>
+      {themes.map(({slug, vision, icon, title}) => (
+          <ThemeWrapper key={slug}>
+              <ThemeIcon>
+                <Image fixed src={icon} height={35} width={50}/>
+              </ThemeIcon>
+              <ThemeText>
+                <Subtitle>{title}</Subtitle>
+                <Content>{vision}</Content>
+              </ThemeText>
           </ThemeWrapper>
-          ))}
+      ))}
       <Title>Join us</Title>
       <SubtitleWithLine>
         <Line/>
@@ -50,7 +50,7 @@ export default function About({themes}){
 }
 
 const Wrapper = styled.div`
-  padding: 4rem 8rem;
+  margin: 4rem 8rem;
 `
 const Title = styled.p`
   //styleName: H1;
