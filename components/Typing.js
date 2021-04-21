@@ -10,9 +10,6 @@ const words = [
   'We are interested in food.',
   'We are interested in democracy.',
   'With you, we make a planet friendly future',
-  'We believe citizens can be policy makers.',
-  'We believe learners can be explorers.',
-  'We believe workers can be founders.',
   'We believe designers should go beyond people center approach.',
   'We believe in lives centered design.',
   'We believe in people-planet approach.',
@@ -23,7 +20,7 @@ const words = [
 export default function Typing(){
   return <StyledTyped
             strings={words}
-            typeSpeed={20}
+            typeSpeed={10}
             loop
         />
 }
@@ -31,7 +28,7 @@ export default function Typing(){
 const StyledTyped = Styled(Typed)`
   
   .typed-cursor {
-        color: lightgreen;
+        color: hsla(180, 100%, 50%, 1);
         opacity: 1;
         animation: typedjsBlink 0s infinite;
         -webkit-animation: typedjsBlink 0s infinite;

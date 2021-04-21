@@ -23,10 +23,10 @@ export default function Blog({ mdxSource, frontMatter }) {
 
 
 export async function getStaticPaths() {
-  const posts = await getFiles('project')
+  const themes = await getFiles('theme')
 
   return {
-      paths: posts.map((p) => ({
+      paths: themes.map((p) => ({
           params: {
               slug: p.replace(/\.mdx/, '')
           }
@@ -36,7 +36,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const post = await getFileBySlug('project', params.slug)
+  const theme = await getFileBySlug('theme', params.slug)
 
-  return { props: post }
+  return { props: theme }
 }

@@ -80,12 +80,11 @@ body {
     'cv03' 1, 'cv04' 1;
   font-variation-settings: 'wght' 450;
   font-variant: common-ligatures contextual;
-  letter-spacing: -0.02em;
-  line-height: 1.6;
+  letter-spacing: 0;
+  line-height: 1.7;
   background-color: hsl(0deg 0% 98% / 100%);
-  color: hsl(222deg 22% 22% / 100%);
+  color: hsl(0deg 0% 17% / 100%);
 }
-
 b,
 strong,
 h3,
@@ -118,12 +117,11 @@ h5 {
 }
 
 a {
-  color: hsl(47deg 94% 43% / 100%);
+  color: hsl(0deg 0% 17% / 100%);
   text-decoration: none;
 }
-
 a:hover {
-  text-decoration: underline;
+  color: hsl(0deg 0% 17% / 60%);
 }
 
 img {

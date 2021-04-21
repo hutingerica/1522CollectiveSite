@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import Layout from '../components/Layout'
 import { getAllFilesFrontMatter } from '../lib/mdx'
 
@@ -7,11 +8,13 @@ import styled from 'styled-components'
 import Typing from '../components/Typing'
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('project')
+  const bits = await getAllFilesFrontMatter('bit')
+  const themes = await getAllFilesFrontMatter('theme')
 
-  return { props: { posts } }
+  return { props: { bits,themes } }
 }
-export default function Home({posts}) {
+
+export default function Home({bits, themes}) {
   return (
     <Layout home>
       <Head>
@@ -20,18 +23,51 @@ export default function Home({posts}) {
       </Head>
 
       <main>
-        <h1><Typing/></h1>
-        <ListTitle><p>Selected Projects and Experiements</p></ListTitle>
+        <TypedArea>
+          <Typing/>
+        </TypedArea>
+        <StyledTitle>
+          <p>Theme</p><Line/>
+        </StyledTitle>
+        <ThemeItems>
+          {themes.map(({slug, title, slogan}) => (
+            <ThemeItem>
+            <Link href={`/theme/${slug}`}>
+              <a>
+              <Image
+                priority
+                block
+                src={`/icons/index-${slug}.png`}
+                height={50}
+                width={133}
+              />
+              <p>{title}</p>
+              </a>
+            </Link>
+            <ThemeSlogan><p>{slogan}</p></ThemeSlogan>
+          </ThemeItem>
+          ))}
+        </ThemeItems>
+        <StyledTitle>
+          <p>Recent bits</p>
+        </StyledTitle>
         <Wrapper>
-          {posts.map(({ slug, tag, title }) => (
-            <ListItem key={slug}>
-              <Link href={`/project/${slug}`}>
-                <ItemLink>
-                      <ItemTitle>{title}</ItemTitle>
-                      <ItemTag>{tag}</ItemTag>
-                </ItemLink>
+          {bits.map(({ slug, heroImage, title, date, theme, stage }) => (
+            <ListBit key={slug}>
+              <Link href={`/bit/${slug}`}>
+                      <a>
+                        <ItemTitle>{title}</ItemTitle>
+                        <Tags>
+                          <p>{stage}</p>
+                          <p>{theme}</p>
+                          <p>{date}</p>
+                        </Tags>
+                        <ImageWrapper>
+                          <img src={`${heroImage}`}/>
+                        </ImageWrapper>
+                      </a>
               </Link>
-            </ListItem>
+            </ListBit>
           ))}
         </Wrapper>
       </main>
@@ -41,58 +77,119 @@ export default function Home({posts}) {
       </footer>
     </Layout>
 )}
+const ThemeSlogan = styled.div`
+  display: none;
+  position: absolute;
+  top:20%;
+  right:0;
+  max-width: 24rem;
+  margin: 0 4rem;
 
-const ListTitle = styled.div`
   p{
-    letter-spacing: -0.05rem;
-    line-height:1.2;
-    margin: 0.5rem 0;
-    color: hsl(0deg 0% 60% / 100%);
+    font-size: 40px;
+    font-variation-settings: 'wght' 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
   }
 `
+const ThemeItem = styled.div`
+  padding: 32px 12px;
+  border: 2.4px solid transparent;
+  margin-right: 1rem;
+  &::last-child {
+    margin-right: 4.5rem;
+  }
+
+  &:hover {
+    border: 2.4px solid hsl(0deg 0% 17% / 100%);
+    background-color: hsl(0deg 0% 100% / 50%);
+    a {
+      color: hsl(0deg 0% 17% / 100%);
+    }
+    ${ThemeSlogan}{
+      display:block;
+    }
+  }
+  p{
+    font-size:24px;
+    line-height:1.25;
+    letter-spacing:-0.02rem;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top:3px;
+  }
+`
+const ThemeItems = styled.div`
+  display: flex;
+  position: relative;
+  margin: 1rem 8rem;
+  margin-left:0;
+  margin-bottom: 9rem;
+`
+const TypedArea = styled.div`
+  width: 100%;
+  min-height: 24rem;
+  margin: 16rem 0 8rem;
+  font-size: 96px;
+  font-variation-settings: 'wght' 500;
+  line-height: 120px;
+  letter-spacing: -0.02em;
+`
+const StyledTitle = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  p{
+    font-size: 1rem;
+    font-variation-settings: 'wght' 500;
+    line-height:1.7;
+    margin: 0.5rem 0;
+  }
+`
+const Line = styled.div`
+  width:50%;
+  height: 2.4px;
+  background-color: hsl(0, 0%, 17%);
+  margin-top: 3px;
+  margin-left: 1rem;
+`
+
 const Wrapper = styled.ul`
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  flex-wrap: wrap;
+  margin:0 -1rem;
 `
-const ListItem = styled.li`
-  width: 100%;
-  margin: 0;
+const ListBit = styled.li`
+  width: 31%;
+  margin: 1rem;
+  margin-bottom: 2rem;
 `
-const ItemLink = styled.a`
-  color: hsl(222deg 22% 22% / 100%);
-  cursor: pointer;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-left: -1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-
-  &:hover {
-    text-decoration: none;
-    background-color: hsl(0deg 0% 100% / 50%);
-  }
-  &:hover p {
-    color: hsl(47deg 94% 43% / 60%);
-    border-color: hsl(47deg 94% 45% / 60%);
-  }
+const ImageWrapper = styled.div`
 `
 const ItemTitle = styled.p`
-    letter-spacing: -0.05rem;
-    font-size: 1.5rem;
-    margin: 0;
-    font-variation-settings: 'wght' 650;
+    letter-spacing: -0.02rem;
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+    font-variation-settings: 'wght' 700;
 `
-const ItemTag = styled.p`
-    letter-spacing: -0.05rem;
-    font-size: .8rem;
-    padding: 0.1rem 0.5rem;
-    background-color: hsl(0deg 0% 100% / 80%);
-    color: hsl(47deg 94% 43% / 100%);
-    border: 1px solid hsl(47deg 94% 45% / 100%);
-    border-radius: 7px;
-    font-variation-settings: 'wght' 450;
+const Tags = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  margin-left: -0.5rem;
+  p {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0em;
+      margin-left: 0.5rem;
+      &::before{
+        content:'|';
+        padding-right:0.5rem;
+      }
 
+  }
 `

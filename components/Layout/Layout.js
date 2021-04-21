@@ -21,19 +21,20 @@ export default function Layout({ children}) {
       </Head>
           <HomeHeader>
             <Link href="/">
-              <a>
+              <LogoWrapper>
               <Image
                 priority
                 src="/logo.png"
                 alt={meta.siteTitle}
                 height={30}
-                width={271}
+                width={30}
               />
-              </a>
+              <LogoFontStyle>1522 Collective</LogoFontStyle>
+              </LogoWrapper>
             </Link>
             <NavWrapper>
-            <Link href="/about"><a>About</a></Link>
-            <Link href="/bit"><a>Bit</a></Link>
+              <Link href="/about"><a>About</a></Link>
+              <Link href="/bit"><a>Bits</a></Link>
             </NavWrapper>
           </HomeHeader>
       <main>{children}</main>
@@ -42,18 +43,51 @@ export default function Layout({ children}) {
 }
 
 const LayoutWrapper = styled.div`
-  max-width: 84rem;
-  margin: 0 auto;
+  margin: 0 40px;
 `
-const HomeHeader = styled.div`
-  margin: 1rem;
+const LogoFontStyle = styled.p`
+  font-size: 24px;
+  color: hsla(0, 0%, 17%, 1);
+  font-variation-settings: 'wght' 500;
+  line-height: 30px;
+  letter-spacing: -0.02rem;
+  margin:0 8px 0 2px;
+
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
+`
+const LogoWrapper = styled.a`
+  text-decoration: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  &:hover {
+    text-decoration: none;
+    color: hsla(0, 0%, 17%, 0.6);
+  }
+`
+const HomeHeader = styled.div`
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
 `
 const NavWrapper = styled.div`
+
     a {
-    margin-left: 1rem;
+        color: hsla(0, 0%, 17%, 1);
+        font-size: 16px;
+        font-variation-settings: 'wght' 500;
+        line-height: 27px;
+        letter-spacing: 0em;
+        margin-left: 24px;
+
+        &:hover {
+        text-decoration: none;
+        color: hsla(0, 0%, 17%, 0.6);
+        }
   }
 `
