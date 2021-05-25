@@ -8,9 +8,9 @@
       {
         "ssr": true,
         "minify": true,
-        "transpileTemplateLiterals": true,
+        "transpileTemplateLiterals": false,
         "pure": true,
-        "displayName": true,
+        "displayName": false,
         "preprocess": false
       }
     ]
