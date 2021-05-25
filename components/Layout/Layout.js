@@ -91,7 +91,6 @@ const HomeHeader = styled.header`
   justify-content: flex-start;
 `
 const NavWrapper = styled.div`
-
     a {
         color: hsla(0, 0%, 17%, 1);
         font-size: 16px;
