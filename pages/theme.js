@@ -2,7 +2,7 @@ import Layout from '../components/Layout'
 
 export default function Bit(){
   return(
-  <Layout home>
+  <Layout>
       Theme
   </Layout>
   )}

@@ -19,25 +19,24 @@ export default function Bit({ bits }){
       </Head>
       <Wrapper>
         <Title>Bits</Title>
-        <BitsWrapper>
-          {bits.map(({ slug, heroImage, title, date, theme, stage }) => (
+        <BitWrapper>
+          {bits.map(({ slug, heroImage, title, description, theme, stage }) => (
             <ListBit key={slug}>
               <Link href={`/bit/${slug}`}>
                       <a>
-                        <ItemTitle>{title}</ItemTitle>
-                        <Tags>
-                          <p>{stage}</p>
-                          <p>{theme}</p>
-                          <p>{date}</p>
-                        </Tags>
-                        <ImageWrapper>
-                          <Image src={`${heroImage}`} layout="fill" objectFit="cover" />
-                        </ImageWrapper>
+                        <BitImage>
+                          <Image src={heroImage} layout="fill" objectFit="cover" />
+                        </BitImage>
+                        <BitContent>
+                          <p>{theme} | {stage}</p>
+                          <p>{title}</p>
+                          <p>{description}</p>
+                        </BitContent>
                       </a>
               </Link>
             </ListBit>
           ))}
-        </BitsWrapper>
+        </BitWrapper>
       </Wrapper>
   </Layout>
   )}
@@ -53,69 +52,81 @@ const Title = styled.p`
   letter-spacing: -0.02em;
   margin-bottom: 4rem;
 `
-const StyledTitle = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 1rem 0;
-  p{
-    font-size: 1rem;
-    font-variation-settings: 'wght' 500;
-    line-height:1.7;
-    margin: 0.5rem 0;
-  }
-`
-const BitsWrapper = styled.ul`
+const BitWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
-  margin:-1rem;
+  justify-content: flex-start;
+  margin: -.5rem;
+  margin-top:.5rem;
 `
+const BitContent = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  margin: 1.5rem;
+  width: -webkit-fill-available;
+  position: absolute;
+  bottom:0;
+
+  p{
+    width: 100%;
+    font-size: 1.5rem;
+    margin: -1px;
+    padding: .4rem .75rem;
+    background-color: #fafafa;
+    font-variation-settings: 'wght' 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    border-radius: 0 8px 0 8px;
+    border: 1px solid #2c2c2c;
+  }
+  p:first-of-type{
+    width: fit-content;
+    font-size: 1rem;
+    margin: -1px;
+    font-variation-settings: 'wght' 400;
+    border-radius: 8px 8px 0 0;
+  }
+  p:last-of-type{
+    align-self:flex-end;
+    width: fit-content;
+    max-width: 80%;
+    font-size: 1rem;
+    margin: -.5px 1px;
+    font-variation-settings: 'wght' 400;
+    border-radius: 0 0 8px 8px;
+  }
+  `
 const ListBit = styled.li`
   width: 33.3%;
-  padding: 1rem;
+  padding: .5rem;
   border: 1px solid transparent;
-  margin-bottom: 2rem;
+  margin:0;
+
+  &:nth-of-type(1),
+  &:nth-of-type(2){
+    width:50%;
+  }
+
 
   a{
+    display:block;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    width:100%;
+    position:relative;
   }
 
   &:hover {
-    border: 1px solid transparent;
+    ${BitContent} p{
+      background-color: #F3F597;
+      color: #2c2c2c;
+    }
   }
 `
-const ImageWrapper = styled.div`
+const BitImage = styled.div`
   position: relative;
-  min-width: 240px;
-  min-height: 320px;
-  flex: 1;
-
-`
-const ItemTitle = styled.p`
-    letter-spacing: -0.02rem;
-    font-size: 24px;
-    line-height: 1.25;
-    margin-bottom: 0.5rem;
-    font-variation-settings: 'wght' 700;
-`
-const Tags = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 0.5rem;
-  margin-left: -0.5rem;
-  p {
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 24px;
-      letter-spacing: 0em;
-      margin-left: 0.5rem;
-      &::before{
-        content:'|';
-        padding-right:0.5rem;
-      }
-
-  }
+  width: 100%;
+  height: 28rem;
+  border-radius: 8px;
+  overflow: hidden;
 `

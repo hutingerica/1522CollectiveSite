@@ -20,14 +20,13 @@ const words = [
 export default function Typing(){
   return <StyledTyped
             strings={words}
-            typeSpeed={40}
-            startDelay={40}
+            typeSpeed={70}
+            startDelay={10}
             loop
         />
 }
 
 const StyledTyped = Styled(Typed)`
-  
   .typed-cursor {
         color: hsla(180, 100%, 50%, 1);
         opacity: 1;

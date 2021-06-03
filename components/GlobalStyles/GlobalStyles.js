@@ -56,23 +56,37 @@ table {
 }
 
 @font-face {
-  font-family: 'Inter var';
+  font-family: 'Inter Var';
   font-style: normal;
   font-weight: 100 900;
   font-display: block;
   src: url(/fonts/Inter-roman.latin.var.woff2) format('woff2');
 }
 @font-face {
-  font-family: 'Inter var';
+  font-family: 'Inter Var';
   font-style: italic;
   font-weight: 100 900;
   font-display: block;
   src: url(/fonts/Inter-italic.latin.var.woff2) format('woff2');
-  font-named-instance: 'Italic';
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url(/fonts/nunito-v16-latin-regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: block;
+  src: url(/fonts/nunito-v16-latin-italic.woff2) format('woff2');
 }
 
 body {
-  font-family: 'Inter var', system-ui, -apple-system, BlinkMacSystemFont,
+  font-family: 'Inter Var', system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: subpixel-antialiased;
@@ -92,12 +106,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-variation-settings: 'wght' 500;
+  font-variation-settings: 'wght' 800;
   margin: 20px 0 10px;
   padding: 0;
 }
 h1 {
-  font-variation-settings: 'wght' 700;
+  font-variation-settings: 'wght' 900;
   margin: 20px 0 10px;
   padding: 0;
   font-size: 2.5rem;
@@ -106,7 +120,7 @@ h1 {
   margin-bottom:1rem;
 }
 h2 {
-  font-variation-settings: 'wght' 700;
+  font-variation-settings: 'wght' 800;
   margin: 20px 0 10px;
   padding: 0;
   font-size: 2rem;
