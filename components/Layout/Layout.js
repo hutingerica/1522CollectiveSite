@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import styled from 'styled-components'
+import Header from '../Header'
+import PageHeader from '../PageHeader'
 
 const meta = {
   siteTitle: "1522 Collective",
@@ -10,7 +10,7 @@ const meta = {
   favIcon:"/favicon.ico"
 }
 
-export default function Layout({children}) {
+export default function Layout({children, home}) {
   return (
     <LayoutWrapper>
       <Head>
@@ -19,90 +19,28 @@ export default function Layout({children}) {
         <meta property="og:image" content={meta.image}/>
         <meta name="og:title" content={meta.siteTitle}/>
       </Head>
-      <HomeHeader>
-        <Link href="/">
-          <LogoWrapper>
-            <Image
-              priority
-              src="/logo.png"
-              alt={meta.siteTitle}
-              height={30}
-              width={30}
-            />
-            <LogoFontStyle>1522 Collective</LogoFontStyle>
-          </LogoWrapper>
-        </Link>
-        <NavWrapper>
-          <Link href="/about"><a>About</a></Link>
-          <Link href="/bit"><a>Bits</a></Link>
-        </NavWrapper>
-      </HomeHeader>
+      {home? (<Header/>) : (<PageHeader/>)}
       <main>{children}</main>
-      <Footer>
-        <Link href="/">
-          <LogoWrapper>
-            <Image
-              priority
-              src="/logo.png"
-              alt={meta.siteTitle}
-              height={30}
-              width={30}
-            />
-          <FooterFontStyle>1522 Collective</FooterFontStyle>
-          </LogoWrapper>
-        </Link>
-      </Footer>
     </LayoutWrapper>
   )
 }
 
 const LayoutWrapper = styled.div`
-  padding: 0 40px;
-  max-width: 90rem;
+  padding: 40px;
+  max-width: 1440px;
   margin:0 auto;
+  position:relative;
 `
 const LogoFontStyle = styled.p`
-  font-size: 24px;
+  font-size: 1.5rem;
   color: hsla(0, 0%, 17%, 1);
-  font-variation-settings: 'wght' 500;
-  line-height: 30px;
-  letter-spacing: -0.02rem;
+  font-variation-settings: 'wght' 600;
+  line-height: 36px;
+  letter-spacing: 0.02rem;
   margin:0 8px 0 2px;
 
   &:hover {
     text-decoration: none;
-  }
-`
-const LogoWrapper = styled.a`
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: none;
-    color: hsla(0, 0%, 17%, 0.6);
-  }
-`
-const HomeHeader = styled.header`
-  padding: 1.5rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-`
-const NavWrapper = styled.div`
-    a {
-        color: hsla(0, 0%, 17%, 1);
-        font-size: 16px;
-        font-variation-settings: 'wght' 500;
-        line-height: 27px;
-        letter-spacing: 0em;
-        margin-left: 24px;
-
-        &:hover {
-        text-decoration: none;
-        color: hsla(0, 0%, 17%, 0.6);
-        }
   }
 `
 const Footer = styled.footer`

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Layout from '../../components/Layout'
 import hydrate from 'next-mdx-remote/hydrate'
 import { getFiles, getFileBySlug } from '../../lib/mdx'
@@ -16,22 +17,60 @@ export default function Blog({ mdxSource, frontMatter }) {
         <title>{frontMatter.title}</title>  
       </Head>
       <Wrapper>
-      <h1>{frontMatter.title}</h1>
-      {frontMatter.readingTime.text}
-      {content}
+        <BriefWrapper>
+          {frontMatter.theme} | {frontMatter.stage}
+          <h1>{frontMatter.title}</h1>
+          {frontMatter.readingTime.text}
+          {frontMatter.date}
+        </BriefWrapper>
+        <ContentWrapper>
+          <LeftWrapper><h3>{frontMatter.description}</h3></LeftWrapper>
+          <MidWrapper>
+            <ImageWrapper>
+              <Image priority src={frontMatter.heroImage} layout="fill" objectFit="cover"/>
+            </ImageWrapper>
+            {content}
+          </MidWrapper>
+          <RightWrapper></RightWrapper>
+        </ContentWrapper>
       </Wrapper>
     </Layout>)
 }
 
 const Wrapper = styled.div`
-  margin: 6rem 8rem;
+  margin: 6rem 4rem;
   display: flex;
   flex-direction: column;
   p img {
     margin: 0rem auto 2rem;
   }
-
 `
+const BriefWrapper = styled.section`
+  display:flex;
+  flex-direction: column;
+`
+const ContentWrapper = styled.section`
+  display:flex;
+  justify-content:flex-start;
+  margin-top: 2rem;
+`
+const LeftWrapper = styled.div`
+  width:20%;
+`
+const MidWrapper = styled.div`
+  width:60%;
+  margin: 0 2rem;
+  
+`
+const ImageWrapper = styled.div`
+  position:relative;
+  height: 30rem;
+`
+const RightWrapper = styled.div`
+  width: 20%;
+  background-color: black;
+`
+
 
 
 

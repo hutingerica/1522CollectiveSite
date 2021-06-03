@@ -12,7 +12,7 @@ export async function getStaticProps() {
 
 export default function About({themes}){
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>About</title>
         <link rel="icon" href="favicon.ico" />
