@@ -18,13 +18,23 @@ export default function Blog({ mdxSource, frontMatter }) {
       </Head>
       <Wrapper>
         <BriefWrapper>
-          {frontMatter.theme} | {frontMatter.stage}
           <h1>{frontMatter.title}</h1>
-          {frontMatter.readingTime.text}
-          {frontMatter.date}
+          <h2>{frontMatter.description}</h2>
         </BriefWrapper>
         <ContentWrapper>
-          <LeftWrapper><h3>{frontMatter.description}</h3></LeftWrapper>
+          <LeftWrapper>
+            <LeftWrapperTitle>Tag</LeftWrapperTitle>
+            {frontMatter.tag}
+            <LeftWrapperTitle>Theme & Stage</LeftWrapperTitle>
+            {frontMatter.theme} | {frontMatter.stage}
+            <LeftWrapperTitle>Reading Time</LeftWrapperTitle>
+            {frontMatter.readingTime.text}
+            <LeftWrapperTitle>Published Date</LeftWrapperTitle>
+            {frontMatter.date}
+            <LeftWrapperTitle>By</LeftWrapperTitle>
+            <LeftWrapperTitle>Info</LeftWrapperTitle>
+
+          </LeftWrapper>
           <MidWrapper>
             <ImageWrapper>
               <Image priority src={frontMatter.heroImage} layout="fill" objectFit="cover"/>
@@ -48,6 +58,10 @@ const Wrapper = styled.div`
 const BriefWrapper = styled.section`
   display:flex;
   flex-direction: column;
+
+  h1{
+    font-size:3.6rem;
+  }
 `
 const ContentWrapper = styled.section`
   display:flex;
@@ -56,9 +70,15 @@ const ContentWrapper = styled.section`
 `
 const LeftWrapper = styled.div`
   width:20%;
+  margin-top:-.5rem;
+`
+const LeftWrapperTitle = styled.p`
+  font-size:.8rem;
+  margin:.5rem 0 0;
+  opacity:.8;
 `
 const MidWrapper = styled.div`
-  width:60%;
+  width:80%;
   margin: 0 2rem;
   
 `
@@ -67,8 +87,8 @@ const ImageWrapper = styled.div`
   height: 30rem;
 `
 const RightWrapper = styled.div`
-  width: 20%;
-  background-color: black;
+  width: 0%;
+  background-color: transparent;
 `
 
 
