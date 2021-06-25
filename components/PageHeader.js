@@ -47,7 +47,7 @@ const HeaderWrapperSmall = styled.header`
   position: fixed;
   padding: 1rem ;
   max-width:1348px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid transparent;
   display:flex;
   width:100%;
   top:0;
