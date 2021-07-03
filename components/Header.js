@@ -91,7 +91,7 @@ const HeaderWrapperSmall = styled.header`
   z-index:9999;
   border-radius:0 0 2px 2px;
   background-color:hsla(0, 0%, 98%, .90);
-  backdrop-filter:blur(1.5rem) grayscale(100%);
+  backdrop-filter: blur(1.5rem) grayscale(100%);
 `
 const NavWrapper = styled.nav`
   display:inline-block;

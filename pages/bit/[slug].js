@@ -20,75 +20,125 @@ export default function Blog({ mdxSource, frontMatter }) {
         <BriefWrapper>
           <h1>{frontMatter.title}</h1>
           <h2>{frontMatter.description}</h2>
+          <strong>{frontMatter.date}</strong>
+          <ImageWrapper>
+              <Image priority src={frontMatter.heroImage} layout="fill" objectFit="cover"/>
+          </ImageWrapper>
+          <Smallinfo>
+            <strong>{frontMatter.theme} | {frontMatter.stage}</strong>
+            <strong>{frontMatter.readingTime.text}</strong>
+          </Smallinfo>
         </BriefWrapper>
         <ContentWrapper>
           <LeftWrapper>
+            <Info>
+              <LeftWrapperTitle>{frontMatter.info}</LeftWrapperTitle>
+            </Info>
             <LeftWrapperTitle>Tag</LeftWrapperTitle>
-            {frontMatter.tag}
-            <LeftWrapperTitle>Theme & Stage</LeftWrapperTitle>
-            {frontMatter.theme} | {frontMatter.stage}
-            <LeftWrapperTitle>Reading Time</LeftWrapperTitle>
-            {frontMatter.readingTime.text}
-            <LeftWrapperTitle>Published Date</LeftWrapperTitle>
-            {frontMatter.date}
-            <LeftWrapperTitle>By</LeftWrapperTitle>
-            <LeftWrapperTitle>Info</LeftWrapperTitle>
+            <Tag>{frontMatter.tag}</Tag>  
+            <LeftWrapperTitle>By {frontMatter.by}</LeftWrapperTitle>
 
           </LeftWrapper>
           <MidWrapper>
-            <ImageWrapper>
-              <Image priority src={frontMatter.heroImage} layout="fill" objectFit="cover"/>
-            </ImageWrapper>
             {content}
           </MidWrapper>
-          <RightWrapper></RightWrapper>
         </ContentWrapper>
       </Wrapper>
     </Layout>)
 }
 
 const Wrapper = styled.div`
-  margin: 6rem 4rem;
+  margin-top:40px;
   display: flex;
   flex-direction: column;
-  p img {
-    margin: 0rem auto 2rem;
+  img {
+    margin: 2rem auto;
   }
 `
 const BriefWrapper = styled.section`
   display:flex;
   flex-direction: column;
+  align-items:center;
 
   h1{
     font-size:3.6rem;
   }
+  h2{
+    margin-top:0;
+  }
+  strong{
+    margin:0;
+  }
+`
+const Smallinfo = styled.div`
+  display:flex;
+  width:100%;
+  justify-content: space-between;
+`
+const Tag = styled.a`
+  border-radius: 6px;
+  margin:0;
+  display:inline-block;
+  font-size:.8rem;
+  padding: 0 3px;
+  border: 1px solid black;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+
+`
+const Info = styled.section`
+  border: 1px solid black;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+
+  background-color: white;
+  border-radius: 8px;
+  margin: 0 0 2rem;
+  padding: 1rem;
+
+  p{
+    margin-top:0.5rem;
+  }
 `
 const ContentWrapper = styled.section`
   display:flex;
-  justify-content:flex-start;
-  margin-top: 2rem;
+  justify-content:space-between;
+  margin-top: 3.6rem;
 `
 const LeftWrapper = styled.div`
-  width:20%;
-  margin-top:-.5rem;
+  width:25%;
+  padding-right:1rem;
+  margin-right:1rem;
+
 `
 const LeftWrapperTitle = styled.p`
   font-size:.8rem;
-  margin:.5rem 0 0;
+  margin:.8rem 0 0;
   opacity:.8;
+
+  &:first-of-type {
+    margin-top:0;
+  }
 `
 const MidWrapper = styled.div`
-  width:80%;
-  margin: 0 2rem;
-  
+  width:75%;
+  padding-right:2rem;
+  text-align:center;
+
+  p {
+    margin: 3rem 0;
+
+    &:first-of-type {
+    margin-top:0;
+    }
+  }
 `
 const ImageWrapper = styled.div`
   position:relative;
   height: 30rem;
-`
-const RightWrapper = styled.div`
-  width: 0%;
-  background-color: transparent;
+  width:100%;
+  margin:1rem 0;
+  border: 1px solid black;
 `
 
 

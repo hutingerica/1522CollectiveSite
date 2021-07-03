@@ -27,8 +27,8 @@ export default function Layout({children, home}) {
 
 const LayoutWrapper = styled.div`
   padding: 40px;
-  max-width: 1440px;
-  margin:0 auto;
+  max-width: 1220px;
+  margin:70px auto 0;
   position:relative;
 `
 const LogoFontStyle = styled.p`
