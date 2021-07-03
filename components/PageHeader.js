@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 export default function PageHeader(){
   return (
-    <Wrapper>
       <HeaderWrapperSmall>
           <Link href="/">
             <LogoWrapper>
@@ -12,8 +11,8 @@ export default function PageHeader(){
                 priority
                 src="/logo.png"
                 alt="1522 Collective"
-                height={35}
-                width={112.83}
+                height={36}
+                width={116.06}
               />
               {/* <LogoFontStyle>1522 Collective</LogoFontStyle> */}
             </LogoWrapper>
@@ -23,16 +22,15 @@ export default function PageHeader(){
             <Link href="/bit"><a>Bits</a></Link>
           </NavWrapper>
       </HeaderWrapperSmall>
-    </Wrapper>
   )
 }
-const Wrapper = styled.div`
-`
+
 const LogoWrapper = styled.a`
   text-decoration: none;
   cursor: pointer;
-  display:block;
-  margin: 0 auto 0 0;
+  display:flex;
+  justify-content:center;
+  margin: 0 auto;
   /* border-radius: 5px; */
   /* border: 1px solid transparent; */
 
@@ -46,27 +44,27 @@ const LogoWrapper = styled.a`
 const HeaderWrapperSmall = styled.header`
   position: fixed;
   padding: 1rem ;
-  max-width:1348px;
-  border-bottom: 1px solid transparent;
-  display:flex;
+  border-bottom: 1px solid black;
   width:100%;
   top:0;
-
-  margin: 0 -1px;
+  left:0;
   z-index:9999;
   background-color:hsla(0, 0%, 98%, .90);
   backdrop-filter:blur(1.5rem) grayscale(100%);
 `
 const NavWrapper = styled.nav`
-  display:inline-block;
+  display:flex;
+  align-items: center;
+  position: absolute;
+  top:1rem;
+  right:1rem;
     a {
         color: hsla(0, 0%, 17%, 1);
         font-size: 1rem;
         font-variation-settings: 'wght' 600;
-        line-height: 36px;
         letter-spacing: 0.05em;
         margin-left: 24px;
-        padding: 6px;
+        padding: 3px 6px;
         border-radius: 5px;
         border: 1px solid transparent;
 
