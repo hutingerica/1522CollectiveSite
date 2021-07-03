@@ -123,7 +123,7 @@ const LeftWrapperTitle = styled.p`
 const MidWrapper = styled.div`
   width:75%;
   padding-right:2rem;
-  text-align:center;
+  text-align:left;
 
   p {
     margin: 3rem 0;
