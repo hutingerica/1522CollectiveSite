@@ -21,7 +21,7 @@ export default function StyledImage({src, caption}){
 
 const Wrapper = styled.section`
   display: block;
-  margin: 1rem 10rem;
+  margin: 1rem 15rem;
   @media(max-width:425px){
     display:block;
     padding: .5rem 0;

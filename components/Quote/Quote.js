@@ -13,7 +13,7 @@ export default function Quote({quote, name}){
 }
 
 const Wrapper = styled.section`
-  margin: 3rem 10rem;
+  margin: 3rem 0;
   padding: 0 3rem;
   border-radius: 1rem;
   border: 1px solid black;
