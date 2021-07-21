@@ -96,7 +96,7 @@ const ThemeImage = styled.div`
   left:0;
   width:100%;
   height:20rem;
-  border-radius:0 0 16px 16px;
+  border-radius:0 0 4px 4px;
   overflow:hidden;
   box-sizing: content-box;
   margin: 0 -1px;
@@ -119,7 +119,7 @@ const ThemeSlogan = styled.div`
     font-variation-settings: 'wght' 500;
     line-height: 1.25;
     letter-spacing: -0.02em;
-    border-radius: 8px 8px 0 0;
+    border-radius: 4px 4px 0 0;
     border: 1px solid #2c2c2c;
   }
   p:last-of-type{
@@ -131,7 +131,7 @@ const ThemeSlogan = styled.div`
     font-variation-settings: 'wght' 700;
     line-height: 1.25;
     letter-spacing: -0.02em;
-    border-radius: 0 8px 8px 8px;
+    border-radius: 0 4px 4px 4px;
     border: 1px solid #2c2c2c;
   }
 `
@@ -169,7 +169,7 @@ const ThemeItems = styled.div`
   top:10rem;
   right:0;
   display: block;
-  border-radius:16px;
+  border-radius: 4px;
   overflow:hidden;
   border: 1px solid #2c2c2c;
   scroll-snap-stop: always;
@@ -186,7 +186,7 @@ const TypedArea = styled.div`
   width: 65%;
   min-height: 30rem;
   margin: 5rem 0;
-  border-radius: 16px;
+  border-radius: 4px;
   padding:40px;
   padding-right:80px;
   font-size: 3rem;
@@ -212,7 +212,7 @@ const RecentBit = styled.section`
   width: 70%;
 `
 const BitsTitle = styled(StyledTitle)`
-  border-radius:8px;
+  border-radius: 4px;
   border: 1px solid #2c2c2c;
   background-color: #F3F597;
   justify-content:space-between;
@@ -243,7 +243,7 @@ const BitContent = styled.div`
     font-variation-settings: 'wght' 700;
     line-height: 1.25;
     letter-spacing: -0.02em;
-    border-radius: 0 8px 0 8px;
+    border-radius: 0 4px 0 4px;
     border: 1px solid #2c2c2c;
   }
   p:first-of-type{
@@ -251,7 +251,7 @@ const BitContent = styled.div`
     font-size: 1rem;
     margin: -1px;
     font-variation-settings: 'wght' 400;
-    border-radius: 8px 8px 0 0;
+    border-radius: 4px 4px 0 0;
   }
   p:last-of-type{
     align-self:flex-end;
@@ -260,7 +260,7 @@ const BitContent = styled.div`
     font-size: 1rem;
     margin: -.5px 1px;
     font-variation-settings: 'wght' 400;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 4px 4px;
   }
   `
 const ListBit = styled.li`
@@ -286,6 +286,6 @@ const BitImage = styled.div`
   position: relative;
   width: 100%;
   height: 24rem;
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
 `

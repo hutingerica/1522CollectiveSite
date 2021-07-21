@@ -5,11 +5,21 @@ import hydrate from 'next-mdx-remote/hydrate'
 import { getFiles, getFileBySlug } from '../../lib/mdx'
 import MDXComponent from '../../components/MDXComponent'
 import styled from 'styled-components'
+import {useEffect, useState} from 'react'
+
 
 export default function Blog({ mdxSource, frontMatter }) {
   const content = hydrate(mdxSource, {
       components: MDXComponent
   })
+
+  const [small, setSmall] = useState(false);
+
+  useEffect(()=>{
+    if(typeof window !== "undefined") {
+      window.addEventListener("scroll", () => setSmall(window.pageYOffset > 200));
+    }
+  },[]);
 
   return (
     <Layout>
@@ -17,6 +27,7 @@ export default function Blog({ mdxSource, frontMatter }) {
         <title>{frontMatter.title}</title>  
       </Head>
       <Wrapper>
+        {!small? (
         <BriefWrapper>
           <h1>{frontMatter.title}</h1>
           <h2>{frontMatter.description}</h2>
@@ -29,8 +40,24 @@ export default function Blog({ mdxSource, frontMatter }) {
             <strong>{frontMatter.readingTime.text}</strong>
           </Smallinfo>
         </BriefWrapper>
+        ): <BriefSpace/>}
+        
         <ContentWrapper>
           <LeftWrapper>
+            {small ? (
+            <SmallBriefWrapper>
+              <h1>{frontMatter.title}</h1>
+              <h2>{frontMatter.description}</h2>
+              <SmallImageWrapper>
+                  <Image priority src={frontMatter.heroImage} layout="fill" objectFit="cover"/>
+              </SmallImageWrapper>
+              <Smallinfo>
+                <strong>{frontMatter.date}</strong>
+                <strong>{frontMatter.theme} | {frontMatter.stage}</strong>
+                <strong>{frontMatter.readingTime.text}</strong>
+              </Smallinfo>
+            </SmallBriefWrapper>
+            ) : (null)}
             <Info>
               <LeftWrapperTitle>{frontMatter.info}</LeftWrapperTitle>
             </Info>
@@ -70,6 +97,23 @@ const BriefWrapper = styled.section`
     margin:0;
   }
 `
+const SmallBriefWrapper = styled.section`
+  display:flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  h1{
+    margin-top:0;
+  }
+  h2{
+    margin-top:0;
+  }
+  strong{
+    margin:0;
+  }
+`
+const BriefSpace = styled.div`
+  margin-top: 8.8rem;
+`
 const Smallinfo = styled.div`
   display:flex;
   width:100%;
@@ -107,9 +151,9 @@ const ContentWrapper = styled.section`
 `
 const LeftWrapper = styled.div`
   width:25%;
-  padding-right:1rem;
-  margin-right:1rem;
-
+  margin-right: 1rem;
+  text-align:left;
+  
 `
 const LeftWrapperTitle = styled.p`
   font-size:.8rem;
@@ -122,8 +166,12 @@ const LeftWrapperTitle = styled.p`
 `
 const MidWrapper = styled.div`
   width:75%;
-  padding-right:2rem;
+  max-height: 60rem;
+  overflow: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 1rem;
   text-align:left;
+  border:1px solid black;
 
   p {
     margin: 3rem 0;
@@ -139,6 +187,9 @@ const ImageWrapper = styled.div`
   width:100%;
   margin:1rem 0;
   border: 1px solid black;
+`
+const SmallImageWrapper = styled(ImageWrapper)`
+  max-height: 15rem;
 `
 
 

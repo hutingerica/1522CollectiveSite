@@ -82,11 +82,12 @@ const HeaderWrapper = styled.header`
 const HeaderWrapperSmall = styled.header`
   position: fixed;
   padding: 1rem 0;
-  max-width:1348px;
 
   display:flex;
-  width:100%;
+  justify-content: space-between;
   top:0;
+  left:40px;
+  right:40px;
   margin: 0 -1px;
   z-index:9999;
   border-radius:0 0 2px 2px;
