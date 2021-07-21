@@ -27,21 +27,23 @@ export default function Blog({ mdxSource, frontMatter }) {
         <title>{frontMatter.title}</title>  
       </Head>
       <Wrapper>
-        {!small? (
-        <BriefWrapper>
-          <h1>{frontMatter.title}</h1>
-          <h2>{frontMatter.description}</h2>
-          <strong>{frontMatter.date}</strong>
-          <ImageWrapper>
-              <Image priority src={frontMatter.heroImage} layout="fill" objectFit="cover"/>
-          </ImageWrapper>
-          <Smallinfo>
-            <strong>{frontMatter.theme} | {frontMatter.stage}</strong>
-            <strong>{frontMatter.readingTime.text}</strong>
-          </Smallinfo>
-        </BriefWrapper>
-        ): <BriefSpace/>}
-        
+        {small? <BriefSpace/> :
+           (
+            <BriefWrapper>
+              <h1>{frontMatter.title}</h1>
+              <h2>{frontMatter.description}</h2>
+              <strong>{frontMatter.date}</strong>
+              <ImageWrapper>
+                  <Image priority src={frontMatter.heroImage} layout="fill" objectFit="cover"/>
+              </ImageWrapper>
+              <Smallinfo>
+                <strong>{frontMatter.theme} | {frontMatter.stage}</strong>
+                <strong>{frontMatter.readingTime.text}</strong>
+              </Smallinfo>
+            </BriefWrapper>
+           )
+        }
+
         <ContentWrapper>
           <LeftWrapper>
             {small ? (
