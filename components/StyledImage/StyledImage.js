@@ -21,18 +21,17 @@ export default function StyledImage({src, caption}){
 
 const Wrapper = styled.section`
   display: block;
-  margin: 1rem 0;
+  margin: 1rem 10rem;
   @media(max-width:425px){
     display:block;
     padding: .5rem 0;
-
   }
 `
 const FigureWrapper = styled.figure`
   position: relative;
   display:inline-block;
   width: 100%;
-  height: 40rem;
+  height: 20rem;
   @media(max-width:768px){
     height:15rem;
   }
