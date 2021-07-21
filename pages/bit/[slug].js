@@ -9,17 +9,16 @@ import {useEffect, useState} from 'react'
 
 
 export default function Blog({ mdxSource, frontMatter }) {
-  const content = hydrate(mdxSource, {
-      components: MDXComponent
-  })
-
   const [small, setSmall] = useState(false);
-
   useEffect(()=>{
     if(typeof window !== "undefined") {
       window.addEventListener("scroll", () => setSmall(window.pageYOffset > 200));
     }
   },[]);
+
+  const content = hydrate(mdxSource, {
+    components: MDXComponent
+})
 
   return (
     <Layout>
@@ -150,11 +149,13 @@ const ContentWrapper = styled.section`
   display:flex;
   justify-content:space-between;
   margin-top: 3.6rem;
+  position:relative;
 `
 const LeftWrapper = styled.div`
   width:25%;
   margin-right: 1rem;
   text-align:left;
+  position: absolute;
   
 `
 const LeftWrapperTitle = styled.p`
@@ -171,9 +172,13 @@ const MidWrapper = styled.div`
   max-height: 60rem;
   overflow: auto;
   scroll-behavior: smooth;
-  padding: 1rem 1rem;
+  padding: .5rem 1rem 1rem;
   text-align:left;
-  border:1px solid black;
+  position:absolute;
+  right: -1rem;
+  top: 0;
+
+  ::-webkit-scrollbar { width: 0 ! important }
 
   p {
     margin: 3rem 0;
